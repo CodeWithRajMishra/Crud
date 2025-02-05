@@ -1,15 +1,16 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import TopNav from "./components/TopNav";
+import Footer from "./components/Footer";
 const Layout=()=>{
     return(
         <>
-          <Link to="home">Home</Link> |
-          <Link to="about"> About Us</Link> |
-          <Link to="contact">Contact Us</Link>
-          <hr size="4" color="blue" />
-                <Outlet/>
-          <hr size="4" color="blue" />
-          www.mycompany.com
+          <TopNav />
+          <div id="wrapper">
+           <Outlet />
+           </div>
+           <Footer/>
         </>
     )
 }
+
 export default Layout;
