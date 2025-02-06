@@ -4,7 +4,9 @@ import axios from "axios";
 const Display=()=>{
     const [empdata, setEmpData]= useState([]);
     const loadData=()=>{
-    let api="http://localhost:8000/employee/display";
+     const apipath=import.meta.env.VITE_API_URL;
+     let api=`${apipath}/employee/display`;
+     //let api="http://localhost:8000/employee/display";
     axios.get(api).then((res)=>{
         console.log(res.data);
         setEmpData(res.data);
