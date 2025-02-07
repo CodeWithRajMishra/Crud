@@ -1,27 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./Layout";
-import Home from "./pages/Home";
-import Insert from "./pages/Insert";
-import Display from "./pages/Display";
-import Search from "./pages/Search";
-import Update from "./pages/Update";
-import EmpEdit from "./pages/EmpEdit";
+import AuthApp from "./AuthApp";
+import UnAuthApp from "./UnAuthApp";
+import { useContext } from "react";
+import { mylogContext } from "./LoginContext";
 const App=()=>{
+  const {user} = useContext(mylogContext);
   return(
     <>
-     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout/>}>
-            <Route index element={<Home/>} />
-            <Route path="home" element={<Home/>} />
-            <Route path="insert" element={<Insert/>}/>
-            <Route path="display" element={<Display/>}/>
-            <Route path="search" element={<Search/>} />
-            <Route path="update" element={<Update/>}/>
-            <Route path="empedit/:id" element={<EmpEdit/>}/>
-          </Route>
-        </Routes>
-     </BrowserRouter>
+         <h1> My Login App</h1>
+         {user.auth?   <AuthApp/>  : <UnAuthApp/>  }
     </>
   )
 }
