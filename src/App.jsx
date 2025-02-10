@@ -1,13 +1,17 @@
-import AuthApp from "./AuthApp";
-import UnAuthApp from "./UnAuthApp";
-import { useContext } from "react";
-import { mylogContext } from "./LoginContext";
+import { useCallback, useState } from "react";
+import Call2 from "./Call2";
 const App=()=>{
-  const {user} = useContext(mylogContext);
-  return(
+  const [count, setCount]= useState(0);
+  const [task, setTask] = useState([]);
+  const myAdd=()=>{
+    setTask(values=>([...values, "New Task"]))
+   }
+   const MyTaskAdd = useCallback(myAdd, [task])
+   return(
     <>
-         <h1> My Login App</h1>
-         {user.auth?   <AuthApp/>  : <UnAuthApp/>  }
+      <Call2 task={task} addtask={MyTaskAdd} />
+      <button onClick={()=>{setCount(count+1)}}>Click here!!</button>
+      Count: {count}
     </>
   )
 }
